@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9)
 
-project(tsdb-unittest)
+project(tdnmdb)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -g -w -std=c++11 -lprofiler -ltcmalloc")
 message(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
@@ -77,28 +77,6 @@ set(PROTO_HDRS "${CMAKE_SOURCE_DIR}/db/DB.pb.h")
 
 set(SOURCES
     "${PROJECT_BINARY_DIR}/leveldb/${LEVELDB_PORT_CONFIG_DIR}/port_config.h"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/aws/aws_env.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/aws/aws_env.h"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/aws/aws_file.h"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/aws/aws_retry.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/aws/aws_s3.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/cloud_cache.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/cloud_cache.h"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/cloud_env.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/cloud_env_impl.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/cloud_env_impl.h"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/cloud_env_options.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/cloud_env_wrapper.h"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/cloud_log_controller.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/cloud_log_controller.h"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/cloud_manifest.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/cloud_manifest.h"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/db_cloud_impl.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/db_cloud_impl.h"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/manifest_reader.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/manifest_reader.h"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/purge.cc"
-    "${CMAKE_SOURCE_DIR}/leveldb/cloud/purge.h"
     "${CMAKE_SOURCE_DIR}/leveldb/db/builder.cc"
     "${CMAKE_SOURCE_DIR}/leveldb/db/builder.h"
     "${CMAKE_SOURCE_DIR}/leveldb/db/c.cc"
@@ -196,10 +174,6 @@ set(SOURCES
     "${CMAKE_SOURCE_DIR}/chunk/XORAppender.cpp"
     "${CMAKE_SOURCE_DIR}/chunk/XORChunk.cpp"
     "${CMAKE_SOURCE_DIR}/chunk/XORIterator.cpp"
-    "${CMAKE_SOURCE_DIR}/cloud/S3.cpp"
-    "${CMAKE_SOURCE_DIR}/cloud/S3File.cpp"
-    "${CMAKE_SOURCE_DIR}/cloud/Slice.cpp"
-    "${CMAKE_SOURCE_DIR}/cloud/Status.cpp"
     "${CMAKE_SOURCE_DIR}/db/DB.cpp"
     "${CMAKE_SOURCE_DIR}/db/HttpParser.cpp"
     "${CMAKE_SOURCE_DIR}/third_party/ulid_uint128.cpp"
@@ -347,13 +321,10 @@ endfunction(tsdb_test)
 tsdb_test("base/base_test.cc")
 tsdb_test("chunk/bitstream_test.cc")
 tsdb_test("chunk/chunk_test.cc")
-tsdb_test("db/db_test.cc")
 tsdb_test("db/http_parser_test.cc")
 tsdb_test("head/head_querier_test.cc")
 tsdb_test("head/head_test.cc")
 tsdb_test("index/mem_postings_test.cc")
-tsdb_test("leveldb/cloud/cloud_cache_test.cc")
-tsdb_test("leveldb/db/dbtest.cc")
 tsdb_test("leveldb/db/db_test2.cc")
 tsdb_test("third_party/persistent_cedarpp_test.cc")
 tsdb_test("querier/querier_test.cc")
